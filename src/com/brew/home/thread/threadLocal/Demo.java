@@ -25,11 +25,7 @@ import java.util.concurrent.Executors;
  */
 public class Demo {
 
-    //SimpleDateFormat本身是线程不安全的。
-    //所以可以在format方法上加锁
-    //但也可以使用ThreadLocal.这样每个线程都有一份自己的SimpleDateFormat，自然就不存在线程安全问题了。
-    //如果不使用ThreadLocal.那总不能每次访问util.format方法就new SimpleDateFormat吧..
-    //下面的测试，线程id相同的情况下，不会再走ThreadLocal的withInitial方法。
+
     ThreadLocal<SimpleDateFormat> threadLocal = ThreadLocal.withInitial(() -> {
         System.out.println("thread local init");
         return new SimpleDateFormat("");

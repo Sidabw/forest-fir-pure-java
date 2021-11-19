@@ -15,8 +15,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalField;
 import java.util.Date;
 
 /**
@@ -35,35 +33,60 @@ public class LocalDateTimeTest {
     public static void main(String[] args) {
 
 
+
         //1LocalDate 只获取年月日
         LocalDate localDateNow = LocalDate.now();
         LocalDate localDateSpecified = LocalDate.of(2020, 11, 12);
-        System.out.println(localDateNow.getYear());//年
-        System.out.println(localDateNow.getMonth().getValue());//月
-        System.out.println(localDateNow.getDayOfMonth());//日
-        System.out.println(localDateNow.getDayOfWeek().getValue());//星期几
+        //年
+        System.out.println("LocalDate，何年：" + localDateNow.getYear());
+        //月
+        System.out.println("LocalDate，何月：" + localDateNow.getMonth().getValue());
+        //日
+        System.out.println("LocalDate，何日：" + localDateNow.getDayOfMonth());
+        //星期几
+        System.out.println("LocalDate，周几：" + localDateNow.getDayOfWeek().getValue());
         System.out.println("⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️");
+
+
         //2LocalTime 只获取时分秒
-        LocalTime localTimeNow = LocalTime.now();
         LocalTime localTimeSpecified = LocalTime.of(23, 59, 59);
-        System.out.println(localTimeNow.getHour());
-        System.out.println(localTimeNow.getMinute());
-        System.out.println(localTimeNow.getMinute());
+        LocalTime localTimeNow = LocalTime.now();
+        System.out.println("LocalTime，几时：" + localTimeNow.getHour());
+        System.out.println("LocalTime，几分：" + localTimeNow.getMinute());
+        System.out.println("LocalTime，几秒：" + localTimeNow.getSecond());
         System.out.println("⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️");
+
         //3LocalDateTime 获取年月日时分秒
         LocalDateTime localDateTime = LocalDateTime.now();
         LocalDateTime localDateTime1 = LocalDateTime.of(2019, 11, 10, 14, 46, 56);
-        //LocalDateTime = LocalDate + LocalTime
         LocalDateTime localDateTime2 = LocalDateTime.of(localDateNow, localTimeNow);
+        System.out.println("LocalDateTime，何年：" + localDateTime2.getYear());
+        System.out.println("LocalDateTime，几秒：" + localDateTime2.getSecond());
         System.out.println("⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️");
-        //4格式化时间（线程安全）
-        System.out.println(DateTimeFormatter.ofPattern("yyyy//MM//dd").format(localDateTime));
-        // LocalDateTime localDateTime3 = LocalDateTime.parse("2020//12/12");//parse的话就必须对应的类，不能用DateTimeFormatter
 
+        //4格式化时间（线程安全）
+        //format localTime是不能使用yyy-MM-dd这样的pattern的，否则抛出异常。format localDate也一样不能使用HH:mm:ss
+        System.out.println("DateTimeFormatter:LocalTime，" + DateTimeFormatter.ofPattern("HH:mm:ss").format(localTimeNow));
+        System.out.println("DateTimeFormatter:LocalDate，" + DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDateNow));
+        System.out.println("DateTimeFormatter:LocalDateTime，" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(localDateTime));
+        System.out.println("DateTimeFormatter:LocalDateTime，" + DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDateTime));
+        System.out.println("⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️");
+
+        //5格式化时间-2
+        //parse的话就必须对应的类，不能用DateTimeFormatter
+        //日期格式必须是对的，只有date 没有time同样也会抛出异常
+        LocalDateTime localDateTime4 = LocalDateTime.parse("2020-12-12 19:26:51", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        System.out.println("LocalDateTime.parse:" + localDateTime4);
+        System.out.println("⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️⬇️️️️");
+
+        //6不可变时间Instant
         Instant now = Instant.now();
-        //拿时间戳
-        System.out.println(now.getEpochSecond());   //秒
-        System.out.println(now.toEpochMilli());     //毫秒
-        System.out.println(new Date().getTime());   //毫秒
+        //秒
+        System.out.println("second from Instant: " + now.getEpochSecond());
+        //毫秒
+        System.out.println("milli from Instant: " + now.toEpochMilli());
+        System.out.println("milli from System.currentTimeMillis: "  + System.currentTimeMillis());
+        System.out.println("⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️");
+
     }
 }

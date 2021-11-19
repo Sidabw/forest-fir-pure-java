@@ -10,7 +10,7 @@
  */
 package com.brew.home.basic.extendstest.test3;
 
-import org.junit.Test;
+;
 
 /**
  * 〈一句话功能简述〉:
@@ -22,8 +22,7 @@ import org.junit.Test;
  */
 public class AbstractTest {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
 
         //证明创建一个继承抽象类的匿名内部类时，必须复写父类的所有抽象方法。
         new A() {

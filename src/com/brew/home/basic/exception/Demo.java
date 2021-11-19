@@ -10,8 +10,6 @@
  */
 package com.brew.home.basic.exception;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * 〈一句话功能简述〉:
@@ -23,14 +21,13 @@ import org.slf4j.LoggerFactory;
  */
 public class Demo {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Demo.class);
 
     public static void main(String[] args) {
         try {
             new Demo().t1();
         } catch (Exception e) {
             //正常的异常堆栈信息不会有caused by，只有该异常调用了Throwable的initCause(e)方法之后，该异常的堆栈信息里才会有caused by
-            LOGGER.error("", e);
+            // LOGGER.error("", e);
         }
     }
 
@@ -38,7 +35,7 @@ public class Demo {
         try {
             t2();
         } catch (Exception e) {
-            LOGGER.error("", e);
+            // LOGGER.error("", e);
             MyException myException = new MyException(e.getMessage());
             myException.initCause(e);
             throw myException;

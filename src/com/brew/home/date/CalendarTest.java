@@ -4,67 +4,68 @@ package com.brew.home.date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class CalendarTest {
+
+    /**
+     * <p> 1. SimpleDateFormat本身是线程不安全的。
+     * <p> 2. 所以可以在format方法上加锁
+     * <p> 3. 但也可以使用ThreadLocal.这样每个线程都有一份自己的SimpleDateFormat，自然就不存在线程安全问题了。
+     * <p> 4. 如果不使用ThreadLocal.那总不能每次访问util.format方法就new SimpleDateFormat吧..
+     * <p> 5. 下面的测试，线程id相同的情况下，不会再走ThreadLocal的withInitial方法。
+     */
+    private static final ThreadLocal<SimpleDateFormat> FORMATTER_THREAD_LOCAL = ThreadLocal.withInitial(() -> {
+        System.out.println("thread local init");
+        return new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒");
+    });
+
     public static void main(String[] args) throws ParseException {
-		/*Calendar calendar = Calendar.getInstance();
-		String format = new SimpleDateFormat("yyyyMMddHHmmss").format(calendar.getTime());
-		calendar.add(Calendar.DAY_OF_MONTH, -1);
-		String format2 = new SimpleDateFormat("yyyyMMddHHmmss").format(calendar.getTime());
-		System.out.println(format);
-		System.out.println(format2);*/
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DAY_OF_MONTH, 9);   //week时，这里0表示明天，-1表示今天
-        String yesterday = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒").format(cal.getTime());
-        System.out.println("明天周" + cal.get(Calendar.DAY_OF_WEEK));
-        System.out.println(yesterday);
+
+
+        //week时，这里0表示明天，-1表示今天
+        cal.add(Calendar.DAY_OF_MONTH, -1);
+        String d00 = FORMATTER_THREAD_LOCAL.get().format(cal.getTime());
+        System.out.println("昨天：" + d00);
 
         cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_MONTH, 0);
-        String today = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒").format(cal.getTime());
+        String d0 = FORMATTER_THREAD_LOCAL.get().format(cal.getTime());
+        System.out.println("今天：" + d0);
+
+        cal.add(Calendar.DAY_OF_MONTH, 22);
+        String d1 = FORMATTER_THREAD_LOCAL.get().format(cal.getTime());
+        System.out.println("22天后：" + d1);
+        System.out.println("22天后，周：" + cal.get(Calendar.DAY_OF_WEEK));
+
         cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -1);
-        String lastYear = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒").format(cal.getTime());
-        System.out.println("yesterday" + yesterday);
-        System.out.println(today);
-        System.out.println(lastYear);
+        String lastYear = FORMATTER_THREAD_LOCAL.get().format(cal.getTime());
+        System.out.println("去年：" + lastYear);
 
-		
-		/*System.out.println(new Date().getTime());
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.HOUR_OF_DAY  ,new Integer("-"+"1分钟前".replace("分钟前", "")));
-		System.out.println(new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒").format(cal.getTime()));
-		System.out.println(cal.getTime().getTime());*/
 
-        System.out.println(new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒").format(new Date(1529592000000L)));
-        Date parse = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss").parse("2018.07.03 23:59:00");
-        System.out.println(new SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(parse));
-        //System.out.println(parse.getTime());2018.07.03 23:59:00
+        cal = Calendar.getInstance();
+        cal.add(Calendar.HOUR_OF_DAY, -1);
+        String lastHour = FORMATTER_THREAD_LOCAL.get().format(cal.getTime());
+        System.out.println("一小时前：" + lastHour);
 
-        Calendar instance = Calendar.getInstance();
-        instance.add(Calendar.DAY_OF_MONTH, +2);
-        String aftertTomorrow = new SimpleDateFormat("yyyy年MM月dd日").format(instance.getTime());
-        String result = aftertTomorrow + " 00时00分00秒";
-        System.out.println(result);
+        cal = Calendar.getInstance();
+        cal.add(Calendar.MINUTE, -10);
+        String xMinAgo = FORMATTER_THREAD_LOCAL.get().format(cal.getTime());
+        System.out.println("10分钟前：" + xMinAgo);
 
-        System.out.println("---------------------------------");
-        Calendar currentTime = Calendar.getInstance();
-        currentTime.add(Calendar.MINUTE, -10);
-        System.out.println(new SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(currentTime.getTime()));
 
-        System.out.println("---------------------------------");
-        //nanoTime 纳秒值    毫秒 微秒 纳秒
-        long c1 = System.nanoTime();
-//      List<Model> th_zhaiwuyuqiweiqingchang = models.stream().filter(e -> e.getPinyinMongoId().equals("th_zhaiwuyuqiweiqingchang")).collect(Collectors.toList());
-//		List<Model> th_zhaiwuyuqiweiqingchang = models.parallelStream().filter(e -> e.getPinyinMongoId().equals("th_zhaiwuyuqiweiqingchang")).collect(Collectors.toList());
-        long c2 = System.nanoTime();
-        //long c3 = TimeUnit.NANOSECONDS.toMillis(c2 - c1);
-        System.out.println(c2 - c1);
-        String sss = "0.0";
-        float v = Float.parseFloat(sss);
-        System.out.println(v == 0);
+        /*
+         * 关于System.currentTimeMillis() 和 System.nanoTime()的补充说明
+         * 1。 1秒=1000毫秒，1毫秒=1000微秒，1微秒=1000纳秒
+         * 2。 System.currentTimeMillis()表示自1970年1月1日0时起的毫秒数
+         * 3。 System.nanoTime()只是以纳秒作为单位，但一不能精确到真正的纳秒，更重要的是不能表示时间。
+         * 4。 System.nanoTime()往往用来衡量一段代码的执行时间差、网络链接时间差这种相对值。
+         */
+        long currentTimeMillis = System.currentTimeMillis();
+        long nanoTime = System.nanoTime();
+        System.out.println("currentTimeMillis: " + currentTimeMillis);
+        System.out.println("nanoTime: " + nanoTime);
+
     }
 }

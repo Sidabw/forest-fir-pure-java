@@ -1,7 +1,5 @@
 package com.brew.home.nio.nio;
 
-import org.jfree.util.Log;
-import org.junit.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,8 +14,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class NIODemo_3 {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
         System.out.println(fileMD5("/Users/feiyi/Downloads/movies-music/浮生梦.mkv"));
     }
 
@@ -29,7 +26,7 @@ public class NIODemo_3 {
             digest.update(byteBuffer);
             return toHexString(digest.digest());
         } catch (IOException | NoSuchAlgorithmException e) {
-            Log.error("", e);
+            System.out.println(e);
             return "";
         }
     }
