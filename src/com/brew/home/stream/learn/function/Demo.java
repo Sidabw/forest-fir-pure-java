@@ -48,6 +48,7 @@ public class Demo {
         Predicate<String> predicate = (x) -> {
             return x.equals("");
         };
+
         //简写
         Predicate<String> predicate2 = e -> e.equals("");
         System.out.println(predicate.test("abc"));

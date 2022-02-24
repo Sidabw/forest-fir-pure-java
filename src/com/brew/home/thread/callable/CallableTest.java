@@ -16,12 +16,11 @@ import java.util.concurrent.*;
  * 〈一句话功能简述〉:
  * 〈
  * 主要涉及到几个类：
- * Future:接口，声明，里面的get方法会阻塞等待线程的返回值。
- * FutureTask:包装Callable的，同时也是Runnable 和 Future的子类，
- * 里面的run方法，就是正常调用(也就是阻塞执行)Callable的call方法。
- * 里面的get方法，实现了Future的get方法，循环等待Callable的返回值，也就是阻塞等待结果。
- * <p>
- * ExecutorCompletionService： 多任务情况下使用，本质上就是就是将结果放到了一个阻塞队列里。调用take方法阻塞等待返回值，本质上也是
+ * <p>Future:接口，声明，里面的get方法会阻塞等待线程的返回值。
+ * <p>FutureTask:包装Callable的，同时也是Runnable 和 Future的子类，
+ * <p>里面的run方法，就是正常调用(也就是阻塞执行)Callable的call方法。
+ * <p>里面的get方法，实现了Future的get方法，循环等待Callable的返回值，也就是阻塞等待结果。
+ * <p>ExecutorCompletionService： 多任务情况下使用，本质上就是就是将结果放到了一个阻塞队列里。调用take方法阻塞等待返回值，本质上也是
  * 调用阻塞队列的take方法阻塞等待返回。
  * <p>
  * 〉

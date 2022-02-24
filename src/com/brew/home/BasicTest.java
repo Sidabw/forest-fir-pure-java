@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /***
  *  Created by shao.guangze on 2018/7/26
@@ -57,7 +58,7 @@ public class BasicTest {
         //3。真随机数：往往都是一些实际现象，如抛硬币等。对核裂变等要求的真正随机数，往往是非常复杂的。
         int i = new Random().nextInt(10);
         System.out.println(i);
-
+        ThreadLocalRandom.current().nextInt();
 
         //string 和 StringBuffer 在使用上的一点区别
         // String a = null;
