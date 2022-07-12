@@ -10,6 +10,7 @@
  */
 package com.brew.home.date;
 
+
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -33,6 +34,8 @@ public class LocalDateTimeTest {
     public static void main(String[] args) {
 
 
+        //Convert Date to LocalDate or LocalDateTime and Back
+        //https://www.baeldung.com/java-date-to-localdate-and-localdatetime
 
         //1LocalDate 只获取年月日
         LocalDate localDateNow = LocalDate.now();
@@ -87,6 +90,7 @@ public class LocalDateTimeTest {
         System.out.println("milli from Instant: " + now.toEpochMilli());
         System.out.println("milli from System.currentTimeMillis: "  + System.currentTimeMillis());
         System.out.println("⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️");
+
 
     }
 }
