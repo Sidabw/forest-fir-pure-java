@@ -1,4 +1,4 @@
-package com.brew.home.jvm.jmx;
+package com.brew.home.jvm.jmx.l1;
 
 import java.lang.management.*;
 import java.util.List;
