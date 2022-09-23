@@ -8,7 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 public class DemoMain {
 
-    public static void main(String[] args) throws MalformedObjectNameException, NotCompliantMBeanException, InstanceAlreadyExistsException, MBeanRegistrationException, InterruptedException {
+    public static void main(String[] args) throws MalformedObjectNameException, NotCompliantMBeanException,
+            InstanceAlreadyExistsException, MBeanRegistrationException, InterruptedException {
         MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
         ObjectName mxbeanName = new ObjectName("com.demo.jmx.mbean:type=MyUserImpl, name=custom");
         MyUserImpl myUser = new MyUserImpl();
