@@ -1,6 +1,5 @@
 package com.brew.home.jvm.jmx.l2.bean;
 
-import com.brew.home.jvm.jmx.l2.pojo.User;
 
 public class MyUserImpl implements MyUser{
 

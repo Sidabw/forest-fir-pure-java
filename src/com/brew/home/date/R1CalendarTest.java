@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class CalendarTest {
+public class R1CalendarTest {
 
     /**
      * <p> 1. SimpleDateFormat本身是线程不安全的。
