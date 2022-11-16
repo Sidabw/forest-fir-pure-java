@@ -3,6 +3,7 @@ package com.brew.home.date;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.Date;
 
@@ -42,7 +43,7 @@ public class R3LocalDateTimeTest {
 
         System.out.println("print1,当前时区：" + ZoneOffset.systemDefault());
         LocalDateTime now = LocalDateTime.now();
-        long timestamp1 = now.atZone(ZoneOffset.systemDefault()).toInstant().toEpochMilli();
+        long timestamp1 = now.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
         System.out.println("print2,当前时间戳：" + timestamp1);
         System.out.println("print3,当前时间：" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date(timestamp1)));
 
