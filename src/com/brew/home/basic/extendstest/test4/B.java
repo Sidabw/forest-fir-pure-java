@@ -15,7 +15,7 @@ package com.brew.home.basic.extendstest.test4;
  * 〈〉
  *
  * @author feiyi
- * @create 2020/1/6
+ * @date 2020/1/6
  * @since 1.0.0
  */
 public class B extends A {

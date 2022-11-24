@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 〈〉
  *
  * @author feiyi
- * @create 2020/3/19
+ * @date 2020/3/19
  * @since 1.0.0
  */
 public class User2 implements Runnable {

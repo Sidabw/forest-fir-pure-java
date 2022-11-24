@@ -15,7 +15,7 @@ package com.brew.home.design.mode.singleton;
  * 〈饿汉式单例〉
  *
  * @author feiyi
- * @create 2019/1/2
+ * @date 2019/1/2
  * @since 1.0.0
  */
 public class Singleton {

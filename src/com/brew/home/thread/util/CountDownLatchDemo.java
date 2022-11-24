@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * 〈使用CountDownLatch替代x1.join(); x2.join()等，实现主线程等待子线程结束，模拟真正并发等〉
  *
  * @author feiyi
- * @create 2020/5/24
+ * @date 2020/5/24
  * @since 1.0.0
  */
 public class CountDownLatchDemo {

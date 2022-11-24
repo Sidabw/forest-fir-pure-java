@@ -17,7 +17,7 @@ import java.util.Observable;
  * 〈被观察者〉
  *
  * @author feiyi
- * @create 2019/12/27
+ * @date 2019/12/27
  * @since 1.0.0
  */
 public class MyObservable extends Observable {

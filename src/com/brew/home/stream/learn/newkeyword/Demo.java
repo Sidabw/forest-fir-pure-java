@@ -26,7 +26,7 @@ import java.util.function.Supplier;
  * 数组构造方法引用：TypeName[]::new〉
  *
  * @author feiyi
- * @create 2018/11/22
+ * @date 2018/11/22
  * @since 1.0.0
  */
 public class Demo {

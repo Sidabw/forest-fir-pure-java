@@ -15,7 +15,7 @@ package com.brew.home.basic.extendstest.test2;
  * 〈〉
  *
  * @author feiyi
- * @create 2019/12/5
+ * @date 2019/12/5
  * @since 1.0.0
  */
 public class Dog extends Animal<DogEntity> {

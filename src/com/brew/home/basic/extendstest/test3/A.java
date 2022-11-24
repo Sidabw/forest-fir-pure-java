@@ -15,7 +15,7 @@ package com.brew.home.basic.extendstest.test3;
  * 〈〉
  *
  * @author feiyi
- * @create 2019/12/23
+ * @date 2019/12/23
  * @since 1.0.0
  */
 public abstract class A {

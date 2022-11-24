@@ -15,7 +15,7 @@ package com.brew.home.basic.extendstest.test5;
  * 〈〉
  *
  * @author feiyi
- * @create 2020/4/10
+ * @date 2020/4/10
  * @since 1.0.0
  */
 public interface B {

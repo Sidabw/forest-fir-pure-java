@@ -15,7 +15,7 @@ package com.brew.home.personal.home;
  * 〈〉
  *
  * @author feiyi
- * @create 2019/10/17
+ * @date 2019/10/17
  * @since 1.0.0
  */
 public class 等额本金 {

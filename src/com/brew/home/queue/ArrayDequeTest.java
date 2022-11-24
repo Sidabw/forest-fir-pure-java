@@ -18,7 +18,7 @@ import java.util.concurrent.ArrayBlockingQueue;
  * 〈〉
  *
  * @author feiyi
- * @create 2019/7/4
+ * @date 2019/7/4
  * @since 1.0.0
  */
 public class ArrayDequeTest {

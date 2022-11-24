@@ -16,7 +16,7 @@ import java.util.concurrent.*;
  * 〈一句话功能简述〉:
  * 〈
  * 主要涉及到几个类：
- * <p>Future:接口，声明，里面的get方法会阻塞等待线程的返回值。
+ * <p>Future:接口，用来描述一个异步计算的结果，里面的get方法会阻塞等待线程的返回值。
  * <p>FutureTask:包装Callable的，同时也是Runnable 和 Future的子类，
  * <p>里面的run方法，就是正常调用(也就是阻塞执行)Callable的call方法。
  * <p>里面的get方法，实现了Future的get方法，循环等待Callable的返回值，也就是阻塞等待结果。
@@ -26,10 +26,10 @@ import java.util.concurrent.*;
  * 〉
  *
  * @author feiyi
- * @create 2020/5/19
+ * @date 2020/5/19
  * @since 1.0.0
  */
-public class CallableTest {
+public class    CallableTest {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
         //方式1   ::new Thread(futureTask).start();

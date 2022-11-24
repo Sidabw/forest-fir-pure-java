@@ -22,7 +22,7 @@ import java.util.concurrent.*;
  * 〈多线程测试〉
  *
  * @author feiyi
- * @create 2019/12/30
+ * @date 2019/12/30
  * @since 1.0.0
  */
 public class MultiThread {

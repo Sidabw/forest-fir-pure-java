@@ -17,7 +17,7 @@ import java.lang.reflect.ParameterizedType;
  * 〈〉
  *
  * @author feiyi
- * @create 2019/12/5
+ * @date 2019/12/5
  * @since 1.0.0
  */
 public class Animal<T> {

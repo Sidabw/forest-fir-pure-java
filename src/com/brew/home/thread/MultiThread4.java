@@ -15,7 +15,7 @@ package com.brew.home.thread;
  * 〈测试synchronized〉
  *
  * @author feiyi
- * @create 2020/3/3
+ * @date 2020/3/3
  * @since 1.0.0
  */
 public class MultiThread4 {

@@ -25,7 +25,7 @@ import java.util.concurrent.*;
  * 〉
  *
  * @author feiyi
- * @create 2020/5/24
+ * @date 2020/5/24
  * @since 1.0.0
  */
 public class ForkJoinDemo {

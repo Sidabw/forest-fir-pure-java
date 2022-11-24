@@ -15,7 +15,7 @@ package com.brew.home.basic.innerclass.p3;
  * 〈局部内部类的基础写法〉
  *
  * @author feiyi
- * @create 2021/2/23
+ * @date 2021/2/23
  * @since 1.0.0
  */
 public class Outer {

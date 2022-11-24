@@ -17,7 +17,7 @@ import com.brew.home.design.mode.callback.teacher.ITeacherCallback;
  * 〈〉
  *
  * @author feiyi
- * @create 2019/4/30
+ * @date 2019/4/30
  * @since 1.0.0
  */
 public interface IStudent {

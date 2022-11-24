@@ -15,7 +15,7 @@ package com.brew.home.design.mode.builder;
  * 〈Builder设计模式〉
  *
  * @author feiyi
- * @create 2019/1/2
+ * @date 2019/1/2
  * @since 1.0.0
  */
 public class ModelInfo {
