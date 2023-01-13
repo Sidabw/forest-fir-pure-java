@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 〈一句话功能简述〉:
@@ -36,12 +37,13 @@ public class CyclicBarrierDemo {
         System.out.println("⬇⬇⬇⬇⬇⬇⬇");
         System.out.println("我被优先执行");
         System.out.println(Thread.currentThread().getName() + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
+        System.out.println("⬆⬆⬆⬆⬆⬆⬆");
         try {
             Thread.sleep(2000L);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("⬆⬆⬆⬆⬆⬆⬆");
+        System.out.println(Thread.currentThread().getName() + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
     });
 
     public static void main(String[] args) throws BrokenBarrierException, InterruptedException {
@@ -69,6 +71,8 @@ public class CyclicBarrierDemo {
         t2.start();
         cyclicBarrier.await();
         System.out.println(Thread.currentThread().getName() + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
+
+        TimeUnit.SECONDS.sleep(15);
     }
 
 }
