@@ -25,6 +25,7 @@ public class MyObservable extends Observable {
         //创建一个被观察者，把观察者加进来
         MyObservable myObservable = new MyObservable();
         myObservable.addObserver(new MyObserver());
+        myObservable.addObserver(new MyObserver2());
 
         //被观察者发生变化了，把消息发给观察者。
         myObservable.setChanged();
