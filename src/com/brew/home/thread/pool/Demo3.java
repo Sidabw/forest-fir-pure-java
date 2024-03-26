@@ -19,7 +19,7 @@ public class Demo3 {
         ScheduledExecutorService scheduledExecutor = Executors.newScheduledThreadPool(6);
         AtomicInteger ai = new AtomicInteger(5);
         AtomicInteger ai2 = new AtomicInteger(0);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         scheduledExecutor.scheduleAtFixedRate(()->{
             int a = ai2.incrementAndGet();
             if (a==10){

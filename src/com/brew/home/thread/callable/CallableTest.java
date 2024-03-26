@@ -26,10 +26,9 @@ import java.util.concurrent.*;
  * 〉
  *
  * @author feiyi
- * @date 2020/5/19
- * @since 1.0.0
+ * @since 2020/5/19
  */
-public class    CallableTest {
+public class CallableTest {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
         //方式1   ::new Thread(futureTask).start();
