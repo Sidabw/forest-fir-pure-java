@@ -1,4 +1,4 @@
-package com.brew.home.random;
+package com.brew.home.util.random;
 
 import java.security.SecureRandom;
 
