@@ -1,4 +1,4 @@
-package com.brew.home.io;
+package com.brew.home.util.io;
 
 import java.io.File;
 import java.io.FileInputStream;

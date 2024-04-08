@@ -1,14 +1,11 @@
 # nio-note
 
-> 为什么要学nio？
->
-> 1.io是阻塞的，nio则不是
->
-> 2.io时面向流的，nio是面向buffer的。这也就意味着nio可以向前、向后读，但io不可以，除非你自己去实现buffer cache
->
-> 3.nio有selector。1个selector可以管理多个channel，这样就不会说1个线程io阻塞了，那这个线程就阻塞了，1个channel在读写，另外1个channel该干嘛干嘛。
->
-> 重要的‼️：jdk的io底层也已经使用nio重新实现，所以不用考虑nio效率高那所有的io代码是否要重构？
+##  为什么要学nio？
+
+- io是阻塞的，nio则不是
+- io时面向流的，nio是面向buffer的。这也就意味着nio可以向前、向后读，但io不可以，除非你自己去实现buffer cache
+- nio有selector。1个selector可以管理多个channel，这样就不会说1个线程io阻塞了，那这个线程就阻塞了，1个channel在读写，另外1个channel该干嘛干嘛。
+- 重要的‼️：jdk的io底层也已经使用nio重新实现，所以不用考虑nio效率高那所有的io代码是否要重构？
 
 ## Channel
 
