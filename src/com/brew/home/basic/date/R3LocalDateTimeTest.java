@@ -1,4 +1,4 @@
-package com.brew.home.date;
+package com.brew.home.basic.date;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;

@@ -1,4 +1,4 @@
-package com.brew.home.ref;
+package com.brew.home.jvm.ref;
 
 import java.lang.ref.WeakReference;
 

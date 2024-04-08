@@ -1,4 +1,4 @@
-package com.brew.home.book.core1;
+package com.brew.home.basic.core1;
 
 public class Demo0Binary {
 
