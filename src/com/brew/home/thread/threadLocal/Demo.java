@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 /**
  * 〈一句话功能简述〉:
  * 〈〉
- *
+ * 2024/05/06 补充说明：已经不知道该类是为了测什么的了
  * @author feiyi
  * @date 2020/3/4
  * @since 1.0.0
@@ -51,8 +51,9 @@ public class Demo {
                     System.out.println("thread local init ---- new ThreadLocal");
                     return new SimpleDateFormat("");
                 });
-            } else
+            } else {
                 Thread.sleep(1500L);
+            }
         }
     }
 
