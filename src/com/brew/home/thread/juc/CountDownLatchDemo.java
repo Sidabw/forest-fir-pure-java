@@ -8,7 +8,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.brew.home.thread.util;
+package com.brew.home.thread.juc;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

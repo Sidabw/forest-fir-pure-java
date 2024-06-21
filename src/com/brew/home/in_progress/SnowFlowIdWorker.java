@@ -123,5 +123,7 @@ public class SnowFlowIdWorker {
         for (int i = 0; i < 30; i++) {
             System.out.println(worker.nextId());
         }
+
+        System.out.println(Long.MAX_VALUE);
     }
 }

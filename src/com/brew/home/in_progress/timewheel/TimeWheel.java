@@ -1,8 +1,6 @@
 package com.brew.home.in_progress.timewheel;
 
 
-import com.brew.home.in_progress.timewheel.i.Timer;
-import com.brew.home.in_progress.timewheel.i.TimerTask;
 
 import java.util.concurrent.*;
 
@@ -10,7 +8,7 @@ import java.util.concurrent.*;
  * @author shaogz
  * @since 2024/1/25 17:17
  */
-public class TimeWheel implements Timer {
+public class TimeWheel {
 
     private ExecutorService service = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
@@ -49,15 +47,11 @@ public class TimeWheel implements Timer {
         }
     }
 
-    @Override
     public void createTimerTask(TimerTask task, long delay, TimeUnit unit) {
-
         start();
         long deadline = System.currentTimeMillis() + unit.toMillis(delay) - startTime;
         System.out.println("deadline="+deadline);
         addQueue.offer(new TimerTaskWrapper(task, deadline));
-
-
     }
 
     private void start() {
@@ -167,6 +161,10 @@ public class TimeWheel implements Timer {
         public void expire() {
             service.execute(this);
         }
+    }
+
+    interface TimerTask {
+        void run();
     }
 
     class Bucket {
