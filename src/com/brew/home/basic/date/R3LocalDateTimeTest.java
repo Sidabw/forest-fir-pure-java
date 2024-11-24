@@ -41,6 +41,12 @@ public class R3LocalDateTimeTest {
         //一般程序中的时间戳，都是指毫秒。但如果看到Unix Timestamp，那一定是秒...
         //参考：https://developer.aliyun.com/article/269765     https://zhuanlan.zhihu.com/p/135951778?utm_source=wechat_timeline   https://bajiu.cn/shicha/
 
+        //20241113补充：
+        //一个准确的时间，是由 时区+时间 组成的，例如：UTC+8 2022-10-20 19:46:30:733
+        //不存在绝对的「这一刻」的概念，此时北京的18:00:00，就是美国的10:00:00
+        //所以，字符串的时间和整形的时间戳，是一一对应的，但前提是，字符串的时间指定了时区！！！
+
+
         System.out.println("print1,当前时区：" + ZoneOffset.systemDefault());
         LocalDateTime now = LocalDateTime.now();
         long timestamp1 = now.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
