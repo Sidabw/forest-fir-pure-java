@@ -25,6 +25,12 @@ public class CompletableFutureTest {
         //throw ExecutionException – if this future completed exceptionally
         System.out.println(c1.get());
         TimeUnit.SECONDS.sleep(10);
+
+        CompletableFuture<Object> c2 = CompletableFuture.supplyAsync(() -> {
+            System.out.println("come in");
+            throw new RuntimeException("xxx");
+        });
+        CompletableFuture.allOf(c1, c2).join();
     }
 
 }

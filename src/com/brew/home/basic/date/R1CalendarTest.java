@@ -14,7 +14,7 @@ public class R1CalendarTest {
      * <p> 4. 如果不使用ThreadLocal.那总不能每次访问util.format方法就new SimpleDateFormat吧..
      * <p> 5. 下面的测试，线程id相同的情况下，不会再走ThreadLocal的withInitial方法。
      */
-    private static final ThreadLocal<SimpleDateFormat> FORMATTER_THREAD_LOCAL = ThreadLocal.withInitial(() -> {
+    public static final ThreadLocal<SimpleDateFormat> FORMATTER_THREAD_LOCAL = ThreadLocal.withInitial(() -> {
         System.out.println("thread local init");
         return new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒");
     });
