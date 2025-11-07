@@ -22,6 +22,9 @@ public class TmpTest250715 {
     public static void main(String[] args) throws Exception {
 //        test6();
 //        test5();
+        int a = 104018;
+        int b = 1749081;
+        System.out.println(Math.round(a*100.00/ b));
     }
 
     public static void test6() throws Exception{
