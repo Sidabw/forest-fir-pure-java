@@ -91,6 +91,8 @@ public class Demo {
         System.out.println("--------------------------------------------");
         System.out.println("--------------------------------------------");
 
+        //BiConsumer<T, U>  接收两个不同类型的参数（T 和 U）无返回值（void）；
+
         /**
          * Comparator<T>	T为接受类型
          * */
